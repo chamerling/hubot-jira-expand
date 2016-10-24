@@ -1,0 +1,41 @@
+{
+  "name": "hubot-jira-expand",
+  "version": "0.0.0",
+  "description": "Hubot Atlassian JIRA script. Listen and expands JIRA issues",
+  "author": "Christophe Hamerling <christophe.hamerling@gmail.com>",
+  "homepage": "http://github.com/chamerling/hubot-jira-expand",
+  "keywords": [
+    "node",
+    "hubot",
+    "jira",
+    "atlassian"
+  ],
+  "maintainers": [
+    {
+      "name": "Christophe Hamerling",
+      "email": "christophe.hamerling@gmail.com"
+    }
+  ],
+  "contributors": [],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://mths.be/mit"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/chamerling/hubot-jira-expand/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/chamerling/hubot-jira-expand.git"
+  },
+  "engines": {
+    "node": ">0.8.x",
+    "npm": ">1.0.x"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "jira": "steves/node-jira"
+  }
+}
