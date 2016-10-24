@@ -40,7 +40,7 @@ module.exports = (robot) => {
 
       const link = getIssueUrl(issue);
       const assignee = issue.fields.assignee && issue.fields.assignee.name ? issue.fields.assignee.name : 'nobody';
-      res.send(`<${link}|${issue.key}> — ${issue.fields.status.name}, ${assignee} — ${issue.fields.summary}`);
+      res.send(`${issue.key} : ${link} — ${issue.fields.status.name}, ${assignee} — ${issue.fields.summary}`);
     });
   }
 
