@@ -1,6 +1,6 @@
 {
   "name": "hubot-jira-expand",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Hubot Atlassian JIRA script. Listen and expands JIRA issues",
   "author": "Christophe Hamerling <christophe.hamerling@gmail.com>",
   "homepage": "http://github.com/chamerling/hubot-jira-expand",
