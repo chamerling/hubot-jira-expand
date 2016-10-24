@@ -11,13 +11,13 @@ const password = process.env.HUBOT_JIRA_EXPAND_PASSWORD;
 const hostname = process.env.HUBOT_JIRA_EXPAND_HOSTNAME || 'localhost';
 const port = process.env.HUBOT_JIRA_EXPAND_PORT || 443;
 const protocol = process.env.HUBOT_JIRA_EXPAND_PROTOCOL || 'https';
-const match = (process.env.HUBOT_JIRA_EXPAND_MATCH || '').split(',');
+const projects = (process.env.HUBOT_JIRA_EXPAND_PROJECTS || '').split(',');
 const path = process.env.HUBOT_JIRA_EXPAND_PATH || 'jira';
 const strictSSL = process.env.HUBOT_JIRA_EXPAND_STRICT_SSL || true;
 const apiVersion = 'latest';
 
 const jira = new JiraApi(protocol, hostname, port, user, password, apiVersion, true, strictSSL, null, path);
-const regexp = new RegExp('(^|\\s)(' + match.reduce((x, y) => x + '-|' + y) + '-)(\\d+)\\b', 'gi');
+const regexp = new RegExp('(^|\\s)(' + projects.reduce((x, y) => x + '-|' + y) + '-)(\\d+)\\b', 'gi');
 
 module.exports = (robot) => {
 
@@ -35,11 +35,12 @@ module.exports = (robot) => {
       }
 
       if (!issue) {
-        return robot.logger.info(`Can not find issue ${issueNumber}`);
+        return res.send(`Can not find issue ${issueNumber}`);
       }
 
       const link = getIssueUrl(issue);
-      res.send(`<${link}|${issue.key}> — ${issue.fields.status.name}, ${issue.fields.assignee.name} — ${issue.fields.summary}`);
+      const assignee = issue.fields.assignee && issue.fields.assignee.name ? issue.fields.assignee.name : 'nobody';
+      res.send(`<${link}|${issue.key}> — ${issue.fields.status.name}, ${assignee} — ${issue.fields.summary}`);
     });
   }
 
